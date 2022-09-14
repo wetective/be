@@ -6,7 +6,7 @@ class CreateTips < ActiveRecord::Migration[5.2]
       t.datetime :date
       t.datetime :time
       t.text :description
-      t.user :references
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
