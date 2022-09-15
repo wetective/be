@@ -28,7 +28,7 @@ jobs:
 
       - checkout
       - run: bundle install --path vendor/bundle
-      - run: rails db:{create,migrate}
+      - run: bundle exec rails db:{create,migrate}
       - run: bundle exec rspec
   # deploy:
   #   executor: aws-elastic-beanstalk/default
