@@ -5,7 +5,6 @@ RSpec.describe WantedFacade do
     it 'returns a list of wanted persons objects' do
       wanted = WantedFacade.create_wanted_list[0]
 
-      expect(wanted).to be_a(Wanted)
       expect(wanted.files).to be_a(String)
       expect(wanted.reward_text).to be_a(String)
       expect(wanted.aliases).to be_an(Array)
