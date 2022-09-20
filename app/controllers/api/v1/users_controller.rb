@@ -1,4 +1,4 @@
-class UsersController
+class Api::V1::UsersController < ApplicationController
   
   def index
     
@@ -13,7 +13,8 @@ class UsersController
   end
 
   def create
-    @user = User.new
+    @user = User.create!(user_params)
+    binding.pry
   end
 
   def destroy
@@ -26,5 +27,10 @@ class UsersController
 
   def update
 
+  end
+
+  private
+  def user_params
+    params.permit(:first_name, :email, :password, :password_confirmation)
   end
 end
