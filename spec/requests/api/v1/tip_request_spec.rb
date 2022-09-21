@@ -7,7 +7,7 @@ RSpec.describe 'Tip submission endpoint' do
       tip = Tip.create!(uid: 123456789, location: 'Denver, CO', description: 'Test tip form', user_id: 1, created_at: 'Wednesday, September 21, 2022')
 
       tip_params = { uid: 123456789, location: 'Denver, CO', description: 'Test tip form', user_id: 1, created_at: 'Wednesday, September 21, 2022' }
-      
+
       post "/api/v1/users/#{user.id}/tips/new"
 
       new_tip = Tip.last

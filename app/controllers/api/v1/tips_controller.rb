@@ -8,6 +8,6 @@ class Api::V1::TipsController < ApplicationController
   private
 
   def tip_params
-    params.permit(:uid, :location, :date, :time, :description, :user_id)
+    params.permit(:uid, :location, :description, :user_id)
   end
 end
