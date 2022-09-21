@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
       post '/users/register', to: 'users#find_or_create'
       get '/users/find', to: 'users#show'
+
+      post '/users/:id/tips/new', to: 'tips#create'
     end
   end
 end
