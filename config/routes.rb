@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index, :show]
+
+    post '/users/register', to: 'users#find_or_create'
+    get '/users/find', to: 'users#show'
     end
   end
 end
