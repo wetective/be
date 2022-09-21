@@ -6,4 +6,8 @@ class Tip < ApplicationRecord
                         :date,
                         :time,
                         :description
+
+  def something
+    
   end
+end
