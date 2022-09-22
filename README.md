@@ -17,7 +17,7 @@
 
 ## App
 
-WeTechtives app can be found on [Heroku]().
+WeTechtives app can be found on [Heroku](https://wetective-be.herokuapp.com).
 
 ## Background
 
@@ -25,7 +25,7 @@ The WeTectives back end repository supports the [front end repository](https://g
 
 ## Schema
 
-![Screen Shot 2022-09-21 at 10 39 21 AM](https://user-images.githubusercontent.com/99001315/191562387-8f866a38-73bb-4aa8-87a1-6174b744e47e.png)
+![Screen Shot 2022-09-22 at 1 33 27 PM](https://user-images.githubusercontent.com/99001315/191835255-0a2af8d8-7e1e-427f-8b2d-f04ac2ad9c6a.png)
 
 ## Endpoints
 
