@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
 
   def find_or_create
     user = User.oauth_user(user_params)
-    render json: UserSerializer.new(user)
+    render json: UserSerializer.new(user), status: 201
     # user = User.new(email: user_params[:email])
     # if user.save
     #   render json: UserSerializer.new(user), status: :created
