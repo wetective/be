@@ -1,4 +1,4 @@
-# WeTectives Back End Repo
+# Wetectives Back End Repo
 
 ![ruby](https://img.shields.io/badge/Ruby-2.7.4-red)
 ![rails](https://img.shields.io/badge/Rails-5.2.8.1-red)
@@ -6,7 +6,7 @@
 ![contributors](https://img.shields.io/badge/Contributors-5-yellow)
 
 ## Table of Contents
-- [WeTectives Back End Repo](#wetectives-back-end-repo)
+- [Wetectives Back End Repo](#wetectives-back-end-repo)
   - [Table of Contents](#table-of-contents)
   - [App](#app)
   - [Background](#background)
@@ -17,11 +17,11 @@
 
 ## App
 
-WeTechtives app can be found on [Heroku]().
+Wetectives app can be found on [Heroku]().
 
 ## Background
 
-The WeTectives back end repository supports the [front end repository](https://github.com/wetective/fe) by storing user data and tips submitted in the database to be retrieved from the front end app.
+The Wetectives back end repository supports the [front end repository](https://github.com/wetective/fe) by storing user data and tips submitted in the database to be retrieved from the front end app.
 
 ## Schema
 
@@ -57,6 +57,33 @@ GET http://localhost:3000/api/v1/users/find?id={{id}}
   }
 ```
 
+- Create a new tip
+```shell
+GET http://localhost:3000/api/v1/users/:id/tips/new
+
+"data": {
+    "type": "user",
+    "id": "1",
+    "attributes": {
+      "name": "Some person",
+      "email": "sample@email.com",
+    }
+  }
+```
+
+- Retrieve a user's tips
+```shell
+GET http://localhost:3000/api/v1/users/:id/tips
+
+"data": {
+    "type": "user",
+    "id": "1",
+    "attributes": {
+      "name": "Some person",
+      "email": "sample@email.com",
+    }
+  }
+```
 ## Installation
 
 Note: You must also install and run the [WeTectives FE app](https://github.com/wetective/fe) for full functionality.
@@ -101,9 +128,14 @@ $ rails db:{drop,create,migrate,seed}
 - Finally, in order to use the web app you will have to start the server locally and access the app through a web browser.
 
 ```shell
+$ rails s -p 4999
+```
+
+6. Download the frontend repo and run its [fe](https://github.com/wetective/fe) server simultaneously.
+
+```shell
 $ rails s
 ```
-- Note: You must run the [fe](https://github.com/wetective/fe) server simultaneously.
 
 - Open web browser and visit link
     http://localhost:3000 <br><br>
