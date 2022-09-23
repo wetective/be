@@ -9,9 +9,7 @@ class User < ApplicationRecord
       user = User.create!(email: data[:email], password: data[:password], password_confirmation: data[:password_confirmation])
     else
       user = user.authenticate!(data[:password])
-      require 'pry'; binding.pry 
     end
     user
-    require 'pry'; binding.pry 
   end
 end

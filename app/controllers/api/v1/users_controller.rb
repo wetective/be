@@ -20,7 +20,6 @@ class Api::V1::UsersController < ApplicationController
     # require 'pry'; binding.pry 
     user = User.find_by(email: params[:email])
     if user.is_a?(User)
-      require 'pry'; binding.pry 
       if user.authenticate(params[:password])
         render json: UserSerializer.new(user), status: 200
       else
