@@ -1,0 +1,4 @@
+class InvestigationFacade
+
+
+end
