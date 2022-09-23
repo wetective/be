@@ -1,7 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 
   def find_or_create
-    user_params[:password] ||= 'this_is_a_google_oauth_placeholder_password' #but what's a better way to do this?
     user = User.find_or_create_user(user_params)
     if user && user_params[:oauth]
       if user.save || user
