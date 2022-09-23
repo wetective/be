@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+FactoryBot.create_list(:user, 10)
+
+FactoryBot.create_list(:tip, 30)

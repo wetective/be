@@ -1,8 +1,8 @@
 class Api::V1::TipsController < ApplicationController
   def index
-    user = User.find(params[:user_id])
+    user = User.find(params[:id])
     tips = user.tips
-    render json: TipSerializer.new(tip), status: 201
+    render json: TipSerializer.new(tips), status: 201
   end
 
   def create
