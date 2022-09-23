@@ -5,11 +5,10 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show]
 
       post '/users/register', to: 'users#find_or_create'
-      get '/users/find', to: 'users#find'
+      post '/users/login', to: 'users#find'
 
       post '/users/:id/tips/new', to: 'tips#create'
       get '/users/:id/tips', to: 'tips#create'
-
     end
   end
 end
