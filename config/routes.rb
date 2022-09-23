@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :show]
 
-
       post '/users/register', to: 'users#find_or_create'
       post '/users/login', to: 'users#find'
 
