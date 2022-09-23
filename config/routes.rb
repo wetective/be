@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       post '/users/login', to: 'users#find'
 
       post '/users/:id/tips/new', to: 'tips#create'
-      get '/users/:id/tips', to: 'tips#create'
+      get '/users/:id/tips', to: 'tips#index'
     end
   end
 end
