@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Tip submission endpoint' do
   context 'happy path' do
     it 'saves a new tip to the tip db table' do
-      user = User.create!(email: 'user@email.com', id: 1)
+      user = User.create!(email: 'user@email.com', id: 1, password: 'hello')
       tip = Tip.create!(uid: 123456789, location: 'Denver, CO', description: 'Test tip form', user_id: 1, created_at: 'Wednesday, September 21, 2022')
 
       tip_params = { uid: 123456789, location: 'Denver, CO', description: 'Test tip form', user_id: 1, created_at: 'Wednesday, September 21, 2022' }
