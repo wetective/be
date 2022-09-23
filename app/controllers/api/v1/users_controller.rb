@@ -1,9 +1,10 @@
 class Api::V1::UsersController < ApplicationController
 
   def find_or_create
+    user_params[:password] ||= 'this_is_a_google_oauth_placeholder_password' #but what's a better way to do this?
     user = User.find_or_create_user(user_params)
     if user && user_params[:oauth]
-      if user.save
+      if user.save || user
         render json: UserSerializer.new(user), status: 201
       else
         render json: { status: "User Not Found", code: 404, message: "User Not Found" }, status: 404
