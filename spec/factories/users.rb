@@ -6,6 +6,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     city { Faker::Address.city }
     state { Faker::Address.state }
-    password_digest { Faker::Internet.password }
+    password { "test" }
+    password_confirmation { password }
   end
 end

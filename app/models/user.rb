@@ -4,13 +4,14 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.find_or_create_user(data)
-    user = User.find_or_create_by(email: data[:email]) do |user|
-      user.email = data[:email]
-      user.password ||= data[:password]
+    user = User.find_by(email: data[:email])
+    if !user.present?
+      user = User.create!(email: data[:email], password: data[:password], password_confirmation: data[:password_confirmation])
+    else
+      user = user.authenticate!(data[:password])
+      require 'pry'; binding.pry 
     end
-  end
-
-  def self.find_user(data)
-    User.find_by(email: data[:email])
+    user
+    require 'pry'; binding.pry 
   end
 end
