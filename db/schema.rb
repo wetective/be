@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2022_09_14_201748) do
   create_table "tips", force: :cascade do |t|
     t.integer "uid"
     t.string "location"
-    t.datetime "date"
-    t.datetime "time"
     t.text "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false
