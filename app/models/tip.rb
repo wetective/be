@@ -3,5 +3,6 @@ class Tip < ApplicationRecord
 
   validates_presence_of :uid,
                         :location,
-                        :description
-  end
+                        :description,
+                        :date
+end

@@ -1,4 +1,4 @@
-@uids = [ "3f5d03cb681c454f8cc324c3303a579d", 
+uids = [ "3f5d03cb681c454f8cc324c3303a579d", 
          "11954299cdfd402ca45449793d6e24c5", 
          "616712ad0f2f45b8b02b7c7b00d01d07", 
          "f03b9a09ff06f2ea36d26591898a7efe", 
@@ -15,5 +15,6 @@ FactoryBot.define do
     description { Faker::Lorem.paragraph }
     location { Faker::Address.city }
     user_id { User.all.sample.id }
+    date { Faker::Date.between(from: 10.days.ago, to: Date.today) }
   end
 end
