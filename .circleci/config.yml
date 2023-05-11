@@ -83,6 +83,8 @@ workflows:
             - wetective-be-deploy
       - test
       - deploy:
+          context:
+            - wetective-be-deploy
           requires:
             - test
           filters:
