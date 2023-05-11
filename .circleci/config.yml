@@ -29,15 +29,12 @@ commands:
           name: Install Flyctl
           command: |
             curl -L https://fly.io/install.sh | sh -s "latest"
-            /home/circleci/.fly/bin/flyctl auth token ${FLY_ACCESS_TOKEN}
+            ${FLY_INSTALL}/bin/flyctl auth token ${FLY_ACCESS_TOKEN}
   deploy_to_fly_platform:
     steps:
       - run:
           name: Deploy to fly.io
-          command: |
-            "/home/circleci/.fly/bin/flyctl" --app ${FLY_APP_NAME} deploy \
-              --access-token "${FLY_ACCESS_TOKEN}" \
-              --local-only \
+          command: fly deploy
   install_dependencies:
     steps:
       - checkout
