@@ -19,6 +19,7 @@ executors:
           POSTGRES_USER: user
           POSTGRES_DB: be_test
           POSTGRES_PASSWORD:
+
 commands:
   install_flyctl:
     steps:
