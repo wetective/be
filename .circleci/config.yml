@@ -23,6 +23,8 @@ executors:
 commands:
   install_flyctl:
     steps:
+      - run: export FLYCTL_INSTALL="/home/circleci/.fly"
+      - run: export PATH="$FLYCTL_INSTALL/bin:$PATH"
       - run:
           name: Install Flyctl
           command: |
