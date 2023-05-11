@@ -78,7 +78,9 @@ workflows:
       - build:
           context:
             - wetective-be-deploy
-      - test
+      - test:
+          context:
+            - wetective-be-deploy
       - deploy:
           context:
             - wetective-be-deploy
