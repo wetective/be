@@ -78,7 +78,9 @@ jobs:
 workflows:
   build_test_deploy:
     jobs:
-      - build
+      - build:
+          context:
+            - wetective-be-deploy
       - test
       - deploy:
           requires:
