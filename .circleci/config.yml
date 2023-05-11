@@ -34,7 +34,9 @@ commands:
     steps:
       - run:
           name: Deploy to fly.io
-          command: flyctl deploy --remote-only
+          command: |
+            "/home/circleci/.fly/bin/flyctl" --app ${FLY_APP_NAME} deploy \
+              --remote-only \
   install_dependencies:
     steps:
       - checkout
