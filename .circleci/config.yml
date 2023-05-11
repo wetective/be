@@ -2,11 +2,11 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@0.1.2
   # aws-elastic-beanstalk: circleci/aws-elastic-beanstalk@2.0.1
 
-jobs:
-  build:
+executors:
+  app:
     working_directory: ~/be
     docker:
       - image: cimg/ruby:2.7.4-node
@@ -19,6 +19,23 @@ jobs:
           POSTGRES_USER: user
           POSTGRES_DB: be_test
           POSTGRES_PASSWORD:
+commands:
+  install_flyctl:
+    steps:
+      - run:
+          name: Install Flyctl
+          command: |
+            curl -L https://fly.io/install.sh | sh -s "latest"
+            /home/circleci/.fly/bin/flyctl auth token ${FLY_ACCESS_TOKEN}
+  deploy_to_fly_platform:
+    steps:
+      - run:
+          name: Deploy to fly.io
+          command: |
+            "/home/circleci/.fly/bin/flyctl" --app ${FLY_APP_NAME} deploy \
+              --access-token "${FLY_ACCESS_TOKEN}" \
+              --local-only \
+  install_dependencies:
     steps:
       - checkout
       - run:
@@ -27,18 +44,42 @@ jobs:
       - ruby/bundle-install
 
       - checkout
-      - run: bundle install --path vendor/bundle
-      - run: bundle exec rails db:{create,migrate}
+      - run: bundle install
+      - run: bin/rails db:{create,migrate,seed}
+  run_tests:
+    steps:
+      - checkout
       - run: bundle exec rspec
-  # deploy:
-  #   executor: aws-elastic-beanstalk/default
-  #   steps:
-  #     - eb/deploy:
-  #         context: aws-creds
-  #         environment-name: wetective-env
-  #         filters:
-  #           branches:
-  #             only:
-  #               - main
-  #         requires:
-  #           - build
+
+jobs:
+  build:
+    executor: app
+    steps:
+      - checkout
+      - install_dependencies
+  test:
+    executor: app
+    steps:
+      - checkout
+      - install_dependencies
+      - run_tests
+  deploy:
+    machine:
+      image: ubuntu-2204:2022.04.2
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - install_flyctl
+      - deploy_to_fly_platform
+
+workflows:
+  build_test_deploy:
+    jobs:
+      - build
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: main
